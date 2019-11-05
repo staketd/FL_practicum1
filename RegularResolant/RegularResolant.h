@@ -3,8 +3,8 @@
 #pragma once
 
 class RegularResolant {
-    long long max_pref, max_suff, ans;
-    bool full, can_be_skipped;
+    long long max_pref, max_suff, ans, full_length;
+    bool contains_full, contains_empty;
 public:
     const static long long INF = 1e15;
     static char symbol;
