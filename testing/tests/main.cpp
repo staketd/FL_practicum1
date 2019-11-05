@@ -79,7 +79,23 @@ TEST(testCorrectSolution, Test2) {
     char symbol = 'a';
     Solver solve(symbol, reg);
     solve.solve();
+    EXPECT_GE(solve.getAns(), RegularResolant::INF);
+}
 
+TEST(testCorreectSolution, Test3) {
+    std::string reg = "ab*.a.";
+    char symbol = 'a';
+    Solver solve(symbol, reg);
+    solve.solve();
+    EXPECT_EQ(solve.getAns(), 2);
+}
+
+TEST(testCorrectSolution, Test4) {
+    std::string reg = "ab.ba.+*a.";
+    char symbol = 'a';
+    Solver solve(symbol, reg);
+    solve.solve();
+    EXPECT_EQ(solve.getAns(), 2);
 }
 
 int main(int argc, char *argv[]) {

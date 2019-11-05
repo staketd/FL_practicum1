@@ -4,7 +4,7 @@
 #include <WrongNotationException.h>
 
 int Solver::solve() {
-    RegularResolant::x = symbol;
+    RegularResolant::symbol = symbol;
     std::vector<RegularResolant> stack;
     int n = regular_expression.size();
     for (int i = 0; i < n; ++i) {

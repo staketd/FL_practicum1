@@ -4,10 +4,10 @@
 
 class RegularResolant {
     long long max_pref, max_suff, ans;
-    bool full;
+    bool full, can_be_skipped;
 public:
     const static long long INF = 1e15;
-    static char x;
+    static char symbol;
 
     RegularResolant();
     explicit RegularResolant(char c);
