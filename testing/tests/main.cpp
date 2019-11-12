@@ -98,6 +98,15 @@ TEST(testCorrectSolution, Test4) {
     EXPECT_EQ(solve.getAns(), 2);
 }
 
+TEST(testCorrectSolution, Test5) {
+    std::string reg = "ab.*";
+    char symbol = 'a';
+    Solver solve(symbol, reg);
+    solve.solve();
+//    EXPECT_GE(solve.getAns(), RegularResolant::INF);
+    EXPECT_EQ(solve.getAns(), 1);
+}
+
 int main(int argc, char *argv[]) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

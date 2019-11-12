@@ -15,15 +15,17 @@ RegularResolant::RegularResolant(char c) : RegularResolant() {
     }
 }
 
-RegularResolant::RegularResolant() : max_pref(0), ans(0), max_suff(0), contains_full(false), contains_empty(false), full_length(0) {}
+RegularResolant::RegularResolant() : max_pref(0), ans(0), max_suff(0), contains_full(false), contains_empty(false),
+                                     full_length(0) {}
 
 RegularResolant RegularResolant::concatenate(const RegularResolant &r) const {
     RegularResolant res;
 
-    res.contains_full = (contains_full && r.contains_full) || (contains_full && r.contains_empty) || (r.contains_full && contains_empty);
+    res.contains_full = (contains_full && r.contains_full) || (contains_full && r.contains_empty) ||
+                        (r.contains_full && contains_empty);
 
     res.max_pref = max_pref;
-    res.max_suff = max_suff;
+    res.max_suff = r.max_suff;
     res.ans = std::max({ans, r.ans, max_suff + r.max_pref});
 
     if (contains_full) {
