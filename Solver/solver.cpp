@@ -20,7 +20,7 @@ int Solver::solve() {
             }
             RegularResolant a = stack.back();
             stack.pop_back();
-            stack.push_back(a.clini_star());
+            stack.push_back(a.kleene_star());
             continue;
         }
         if (x == '+') {
@@ -55,7 +55,7 @@ int Solver::solve() {
 }
 
 bool Solver::isLetter(char x) {
-    return (x >= 'a' && x <= 'z') || (x >= 'A' && x <= 'Z');
+    return (x >= 'a' && x <= 'b');
 }
 
 Solver::Solver() {

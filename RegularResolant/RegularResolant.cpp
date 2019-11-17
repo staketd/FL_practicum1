@@ -71,7 +71,7 @@ RegularResolant RegularResolant::add(const RegularResolant &r) const {
     return res;
 }
 
-RegularResolant RegularResolant::clini_star() const {
+RegularResolant RegularResolant::kleene_star() const {
     RegularResolant res;
     if (contains_full) {
         res.max_suff = INF;

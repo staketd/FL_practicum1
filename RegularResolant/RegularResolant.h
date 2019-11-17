@@ -14,7 +14,7 @@ public:
 
     RegularResolant concatenate(const RegularResolant &r) const;
     RegularResolant add(const RegularResolant &r) const;
-    RegularResolant clini_star() const;
+    RegularResolant kleene_star() const;
 
     long long getAns() const;
 };
