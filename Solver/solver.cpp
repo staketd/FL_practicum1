@@ -4,12 +4,15 @@
 #include <WrongNotationException.h>
 
 int Solver::solve() {
+    if (!isLetter(symbol)) {
+        throw WrongNotationException();
+    }
     RegularResolant::symbol = symbol;
     std::vector<RegularResolant> stack;
     int n = regular_expression.size();
     for (int i = 0; i < n; ++i) {
         char x = regular_expression[i];
-        if (isLetter(regular_expression[i])) {
+        if (isLetter(x) || x == '1') {
             RegularResolant r(x);
             stack.push_back(r);
             continue;
@@ -55,7 +58,7 @@ int Solver::solve() {
 }
 
 bool Solver::isLetter(char x) {
-    return (x >= 'a' && x <= 'b');
+    return (x >= 'a' && x <= 'c');
 }
 
 Solver::Solver() {
