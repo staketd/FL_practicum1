@@ -107,6 +107,38 @@ TEST(testCorrectSolution, Test5) {
     EXPECT_EQ(solve.getAns(), 1);
 }
 
+TEST(testCorrectSolution, Test6) {
+    std::string reg = "a1+";
+    char symbol = 'a';
+    Solver solve(symbol, reg);
+    solve.solve();
+    EXPECT_EQ(solve.getAns(), 1);
+}
+
+TEST(testCorrectSolution, Test7) {
+    std::string reg = "ab.a.1b+.a.*";
+    char symbol = 'a';
+    Solver solve(symbol, reg);
+    solve.solve();
+    EXPECT_EQ(solve.getAns(), 3);
+}
+
+TEST(testCorrectSolution, Test8) {
+    std::string reg = "acc.c.c.d.+f1+c+.dc.c.c.c.a+.*";
+    char symbol = 'a';
+    Solver solve(symbol, reg);
+    solve.solve();
+    EXPECT_GE(solve.getAns(), RegularResolant::INF);
+}
+
+TEST(testCorrectSolution, Test9) {
+    std::string reg = "ab.a.a1.ab.a.+.aa..";
+    char symbol = 'a';
+    Solver solve(symbol, reg);
+    solve.solve();
+    EXPECT_EQ(solve.getAns(), 4);
+}
+
 int main(int argc, char *argv[]) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

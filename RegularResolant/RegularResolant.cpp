@@ -24,9 +24,25 @@ RegularResolant RegularResolant::concatenate(const RegularResolant &r) const {
     res.contains_full = (contains_full && r.contains_full) || (contains_full && r.contains_empty) ||
                         (r.contains_full && contains_empty);
 
+    res.contains_empty = contains_empty && r.contains_empty;
+
     res.max_pref = max_pref;
     res.max_suff = r.max_suff;
     res.ans = std::max({ans, r.ans, max_suff + r.max_pref});
+
+    if (contains_empty) {
+        res.max_pref = std::max(r.max_pref, res.max_pref);
+        if (r.contains_full) {
+            res.full_length = std::max(res.full_length, r.full_length);
+        }
+    }
+
+    if (r.contains_empty) {
+        res.max_suff = std::max(res.max_suff, max_suff);
+        if (contains_full) {
+            res.full_length = std::max(res.full_length, full_length);
+        }
+    }
 
     if (contains_full) {
         res.max_pref = std::max(res.max_pref, r.max_pref + full_length);
@@ -40,21 +56,13 @@ RegularResolant RegularResolant::concatenate(const RegularResolant &r) const {
         res.full_length = full_length + r.full_length;
     }
 
-    if (contains_empty) {
-        res.max_pref = std::max(r.max_pref, res.max_pref);
-    }
-
-    if (r.contains_empty) {
-        res.max_suff = std::max(res.max_suff, max_suff);
-    }
-
-    res.contains_empty = contains_empty && r.contains_empty;
     return res;
 }
 
 RegularResolant RegularResolant::add(const RegularResolant &r) const {
     RegularResolant res;
     res.contains_full = contains_full || r.contains_full;
+    res.contains_empty = contains_empty || r.contains_empty;
 
     if (contains_full) {
         res.full_length = full_length;
@@ -67,7 +75,7 @@ RegularResolant RegularResolant::add(const RegularResolant &r) const {
     res.max_pref = std::max(max_pref, r.max_pref);
     res.max_suff = std::max(max_suff, r.max_suff);
     res.ans = std::max(ans, r.ans);
-    res.contains_empty = contains_empty || r.contains_empty;
+
     return res;
 }
 

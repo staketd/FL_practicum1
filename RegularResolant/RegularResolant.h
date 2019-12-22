@@ -6,7 +6,7 @@ class RegularResolant {
     long long max_pref, max_suff, ans, full_length;
     bool contains_full, contains_empty;
 public:
-    const static long long INF = 1e15;
+    const static long long INF = 1e9;
     static char symbol;
 
     RegularResolant();

@@ -58,7 +58,7 @@ int Solver::solve() {
 }
 
 bool Solver::isLetter(char x) {
-    return (x >= 'a' && x <= 'c');
+    return (x >= 'a' && x <= 'z');
 }
 
 Solver::Solver() {
